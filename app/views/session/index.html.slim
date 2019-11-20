@@ -1,0 +1,23 @@
+- if @base_date && !@base_date.empty? && @base_date.first.log_date < RELEASE_NOTES.last['date']
+  #release.modal.fade.bs-example-modal-lg
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-header
+          button.close type="button" data-dismiss="modal"
+            span aria-hidden="true" &times;
+            span.sr-only 关闭
+          h4.modal-title 系统升级啦！
+        .modal-body
+          p 从您上一次登录系统之后，系统进行了升级。本次升级的内容包括：
+          ul style="list-style-type:circle;"
+            - RELEASE_NOTES.select{ |r| r['date']>@base_date.first.log_date }.each do |r|
+              - r['note'].each do |n|
+                li 
+                  = n
+        .modal-footer
+          button.btn.btn-primary type="button" data-dismiss="modal" 知道了
+javascript:
+  $(document).ready(function() {
+    $('#release').modal({show: true});
+  });
+

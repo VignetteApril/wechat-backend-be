@@ -1,0 +1,35 @@
+// 示例：使用bootswatch免费主题： 'Paper' bootswatch
+// 首先导入变量
+// @import "bootswatch/cyborg/variables";
+// @import "bootswatch/slate/variables";
+// @import "bootswatch/flatly/variables";
+// @import "bootswatch/lumen/variables";
+// 最后导入需要的bootswatch主题
+// @import "bootswatch/cyborg/bootswatch";
+// @import "bootswatch/slate/bootswatch";
+// @import "bootswatch/flatly/bootswatch";
+// @import "bootswatch/lumen/bootswatch";
+
+// tabler
+@import "tabler/variables";
+@import "bootstrap";
+@import "tabler";
+@import "tabler.plugins"; // optional
+@import "tabler.icons"; // optional includes [browser, flag, payments]
+
+@import "animate";
+@import "wice_grid";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap-datepicker3";
+@import "select2";
+@import "select2-bootstrap";
+@import "select2totree";
+
+// 导入自定义的scss
+@import "custom_css/global";
+@import "custom_css/direct_uploads";
+
+// selectize
+@import 'selectize';
+@import 'selectize.bootstrap3';

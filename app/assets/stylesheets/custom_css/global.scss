@@ -1,0 +1,37 @@
+.page {
+  width: 100%;
+
+  .dropdown-item {
+    font-size: 15px;
+  }
+
+  .help-block {
+    font-size: 5px;
+  }
+
+  .info {
+    background-color: #4479D0;
+    color: white;
+  }
+
+  .gray-card {
+    background: rgb(245,247,251);
+  }
+
+  .card-header-btn{
+    margin-left: auto;
+
+    .select2 {
+      display: inline-block;
+      width: 80px !important;
+      margin-right: 5px;
+    }
+  }
+}
+
+#login-page {
+  background: url("login_bg.png") no-repeat center center;
+  background-size: cover;
+  height:100%;
+  width:100%;
+}

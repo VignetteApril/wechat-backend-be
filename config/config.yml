@@ -1,0 +1,34 @@
+title: 派悦坊小程序后端支撑平台
+subtitle:
+provider:
+aversion: "0.0.1"
+
+# 上传附件在服务器存储时的命名方式
+upload_file_name: new # new=编码命名 / old=保留原文件名
+forbid_shadow_login: true # 如果是TRUE，则同一个用户在同一时间只能有一个人在使用
+# 是否使用CAS Server单点登录
+use_cas_server: false
+
+features:
+  - [登录系统,session,"index,new,create,destroy",平台]
+  - [修改个人密码,users,"edit_password,update_password",平台]
+  - [用户浏览,users,"index,list",系统管理]
+  - [查看用户详细信息,users,"show",系统管理]
+  - [用户管理,users,"new,create,edit,update,destroy",系统管理]
+  - [重置用户密码,users,reset_password,系统管理]
+  - [角色浏览,roles,index,系统管理]
+  - [角色管理,roles,"new,create,edit,update,destroy",系统管理]
+  - [角色人员管理,roles,"add_users,add_users_submit,remove_user_from_role",系统管理]
+  - [权限浏览,features,"index,list",系统管理]
+  - [权限角色授权,features,"add_features,add_features_submit,remove_feature_from_role",系统管理]
+  - [日志管理,sys_logs,"index,show,search",系统管理]
+  - [任务管理,delayed_jobs,"index",系统管理]
+  - [参数配置,sys_configs,"index,show,new,create,edit,update,destroy",系统管理]
+  - [个人事务提醒,notifications,"index,show,edit",平台]
+apps:
+  - name: 系统管理
+    module_chain:
+      - { controller: 'users', action: }
+      - { controller: 'roles', action: }
+      - { controller: 'features', action: }
+      - { controller: 'main_cases', action: }

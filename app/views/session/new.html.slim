@@ -1,0 +1,49 @@
+#login-page
+  .header.py-4
+    .container
+      .d-flex
+        .row
+          = image_tag("logo.png", style: 'width: 70px; height: 70px')
+  .container-fluid
+    .page
+      .page-single
+        .container
+          .row.mt-8
+            .col.col-login.offset-md-4
+              = form_tag "/session", class: 'card' do
+                .card-body.p-6
+                  .card-title
+                   | 登录您的账户
+                  - flash.each do |message_type, message_value|
+                    div class="alert alert-icon alert-#{message_type}"
+                      i.fe.fe-alert-triangle.mr-2 aria-hidden="true"
+                      = message_value
+                  .form-group
+                    label.form-label
+                       | 用户名
+                    = text_field_tag :login, params[:login], class: "form-control", \
+                                                       placeholder: "请输入用户的用户名", "aria-describedby" => "login-status"
+                  .form-group
+                    .form-label
+                      | 密码
+                      / a href="./forgot-password.html" class="float-right small"
+                      /   | 忘记密码
+                    = password_field_tag :password, params[:password], class: "form-control", \
+                                                      placeholder: "默认的密码是：123456@Shike", "aria-describedby" => "password-status"
+                  .form-group
+                    label.custom-control.custom-checkbox
+                      input type="checkbox" class="custom-control-input"
+                      span.custom-control-label
+                         | 记住我
+                  .form-footer
+                    button type="submit" class="btn btn-primary btn-block"
+                     | 登 录
+footer.footer.bg-dark.mb-0
+  container
+    .row.align-items-center.flex-row-reverse.mr-0
+      .col-12.text-center
+        | 北京派悦坊餐饮管理有限公司 Copyright 2010-2019 派悦坊，Ltd 京ICP备12046340
+javascript:
+  $(document).ready(function() {
+    $('#login-form').addClass('animated zoomIn');
+  });
