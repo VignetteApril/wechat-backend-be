@@ -77,3 +77,7 @@ yarn-debug.log*
 
 # Ignore the Swap files
 *.swp
+
+# Ignore generator and rakeTask
+.generators
+.rakeTasks
