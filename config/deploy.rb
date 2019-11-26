@@ -5,7 +5,7 @@ require 'mina/rvm'
 set :application_name, 'youshule'
 set :domain, 'root@39.107.44.233'
 set :deploy_to, '/root/deploy_apps/youshule'
-set :repository, 'git@github.com:VignetteApril/youshule.git'
+set :repository, 'git@gitee.com:VignetteApril/youshule.git'
 set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 set :branch, 'master'
 set :shared_paths, ['config/database.yml', 'config/puma.rb', 'config/secrets.yml', 'config/sidekiq.yml', 'storage', 'sidekiqctrl.sh', 'pumactrl.sh']
