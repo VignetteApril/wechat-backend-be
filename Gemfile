@@ -1,5 +1,5 @@
 # coding: utf-8
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.com'
 ruby '2.6.3'
 
 gem 'rails',                                '5.2.3'
