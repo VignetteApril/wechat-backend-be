@@ -64,7 +64,6 @@ task :setup do
   # log/puma.stdout.log
   command %[touch "#{shared_path}/log/puma.stderr.log"]
   command %[echo "-----> Be sure to edit 'shared/log/puma.stderr.log'."]
-  command %[echo "-----> Be sure to edit '#{shared_path}/config/database.yml'."]
 end
 
 desc "Deploys the current version to the server."
