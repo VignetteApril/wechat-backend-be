@@ -40,6 +40,7 @@ gem 'acts_as_list'
 gem 'enumize'
 gem 'activestorage_qiniu'
 gem 'pg'
+gem 'mina-puma', require: false
 
 group :development, :test do
   gem 'minitest-rails'

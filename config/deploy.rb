@@ -1,6 +1,7 @@
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
+require 'mina/puma'
 
 set :application_name, 'youshule'
 set :domain, 'root@39.107.44.233'
@@ -113,42 +114,42 @@ namespace :app do
   end
 end
 
-namespace :puma do
-  desc "Start the application"
-  task :start do
-    command 'echo "-----> Start Puma"'
-    command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/pumactrl.sh start"
-  end
-
-  desc "Stop the application"
-  task :stop do
-    command 'echo "-----> Stop Puma"'
-    command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/pumactrl.sh stop"
-  end
-
-  desc "reStart the application"
-  task :restart do
-    command 'echo "-----> reStart Puma"'
-    command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/pumactrl.sh reload"
-  end
-end
-
-namespace :sidekiq do
-  desc "Start the sidekiq"
-  task :start do
-    command 'echo "-----> Start sidekiq"'
-    command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/sidekiqctrl.sh start"
-  end
-
-  desc "Stop the sidekiq"
-  task :stop do
-    command 'echo "-----> Stop sidekiq"'
-    command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/sidekiqctrl.sh stop"
-  end
-
-  desc "reStart the sidekiq"
-  task :restart do
-    command 'echo "-----> reStart sidekiq"'
-    command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/sidekiqctrl.sh reload"
-  end
-end
+# namespace :puma do
+#   desc "Start the application"
+#   task :start do
+#     command 'echo "-----> Start Puma"'
+#     command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/pumactrl.sh start"
+#   end
+#
+#   desc "Stop the application"
+#   task :stop do
+#     command 'echo "-----> Stop Puma"'
+#     command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/pumactrl.sh stop"
+#   end
+#
+#   desc "reStart the application"
+#   task :restart do
+#     command 'echo "-----> reStart Puma"'
+#     command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/pumactrl.sh reload"
+#   end
+# end
+#
+# namespace :sidekiq do
+#   desc "Start the sidekiq"
+#   task :start do
+#     command 'echo "-----> Start sidekiq"'
+#     command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/sidekiqctrl.sh start"
+#   end
+#
+#   desc "Stop the sidekiq"
+#   task :stop do
+#     command 'echo "-----> Stop sidekiq"'
+#     command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/sidekiqctrl.sh stop"
+#   end
+#
+#   desc "reStart the sidekiq"
+#   task :restart do
+#     command 'echo "-----> reStart sidekiq"'
+#     command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/sidekiqctrl.sh reload"
+#   end
+# end
