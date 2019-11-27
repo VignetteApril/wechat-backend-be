@@ -9,7 +9,7 @@ case "$1" in
         ;;
     start)
         echo -n "starting puma..."
-        bundle exec puma -C $share_puma_path
+        bundle exec puma -C /root/deploy_apps/youshule/shared/config/puma.rb
         ;;
     stop)
         echo "stoping puma..."
@@ -18,6 +18,6 @@ case "$1" in
     reload)
         echo "reloading puma..."
         kill `cat "${share_puma_pid_path}"`
-        bundle exec puma -C $share_puma_path
+        bundle exec puma -C /root/deploy_apps/youshule/shared/config/puma.rb
         ;;
 esac

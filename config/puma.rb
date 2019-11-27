@@ -1,8 +1,6 @@
 rails_env = ENV['RAILS_ENV'] || "production"
 
 if rails_env == 'production'
-  threads 2, 16
-
   # 可以选择不监听tcp端口，只监听unix socket
   environment ENV.fetch("RAILS_ENV") { "production" }
 
@@ -14,7 +12,7 @@ if rails_env == 'production'
   state_path "#{project_tmp_dir}/sockets/puma.state"
 
   quiet
-  threads 0, 16
+  threads 2, 16
   workers 2
   daemonize true
 else
