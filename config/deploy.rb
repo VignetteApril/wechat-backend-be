@@ -94,6 +94,12 @@ task :deploy do
 end
 
 namespace :app do
+  desc "Rails db:migrate"
+  task :db_migrate do
+    command 'echo "-----> 执行migrate"'
+    command "cd #{current_path} && RAILS_ENV=production rails db:migrate"
+  end
+
   desc "Rails db:seed"
   task :db_seed do
     command 'echo "-----> 执行seed"'
