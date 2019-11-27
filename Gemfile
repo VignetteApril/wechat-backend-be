@@ -4,7 +4,7 @@ ruby '2.6.3'
 
 gem 'rails',                                '5.2.3'
 gem 'sass-rails',                           '5.0.6'
-gem 'uglifier',                             '2.7.2'
+gem 'uglifier',                             '4.2.0'                           
 gem 'coffee-rails',                         '4.2.2'
 gem 'jquery-rails',                         '4.2.1'
 gem 'jbuilder',                             '2.8.0'
