@@ -10,6 +10,7 @@ set :repository, 'git@gitee.com:VignetteApril/youshule.git'
 set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 set :branch, 'master'
 set :shared_paths, ['config/database.yml', 'config/puma.rb', 'config/secrets.yml', 'config/sidekiq.yml', 'storage', 'sidekiqctrl.sh', 'pumactrl.sh']
+set :shared_dirs, fetch(:shared_dirs, []).push('log', 'tmp/pids', 'tmp/sockets')
 
 # 将几个set参数简化成ruby变量
 deploy_to = fetch(:deploy_to)
