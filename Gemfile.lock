@@ -177,7 +177,8 @@ GEM
       method_source (~> 0.9.0)
     pry-nav (0.3.0)
       pry (>= 0.9.10, < 0.13.0)
-    puma (3.12.1)
+    puma (4.3.0)
+      nio4r (~> 2.0)
     qiniu (6.9.0)
       mime-types (~> 3.1)
       rest-client (~> 2.0)
@@ -327,7 +328,7 @@ DEPENDENCIES
   nokogiri (= 1.7)
   pg
   pry-nav
-  puma (= 3.12.1)
+  puma (= 4.3.0)
   rails (= 5.2.3)
   sass-rails (= 5.0.6)
   select2-rails (= 4.0.1)
