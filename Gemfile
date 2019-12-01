@@ -41,6 +41,7 @@ gem 'enumize'
 gem 'activestorage_qiniu'
 gem 'pg'
 gem 'mina-puma', require: false
+gem 'sidekiq'
 
 group :development, :test do
   gem 'minitest-rails'

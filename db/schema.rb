@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_084757) do
+ActiveRecord::Schema.define(version: 2019_12_01_130759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_084757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "subject_id"
+    t.boolean "is_active", default: false
     t.index ["subject_id"], name: "index_book_codes_on_subject_id"
   end
 
