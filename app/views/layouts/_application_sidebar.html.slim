@@ -1,6 +1,10 @@
 .list-group.list-group-transparent.mb-0
-  /
-	  a href="#{main_carousel_path}" class="#{active_class(controller, 'weapp_images', 'product_groups')}"
-	    span class="icon mr-3"
-	      i class="fe fe-user"
-	    | 主页图片管理
+    a href="#{book_codes_path}" class="#{active_class(controller, 'book_codes', 'index')}"
+      span class="icon mr-3"
+        i class="fe fe-book"
+      | 学习码管理
+
+    a href="#{grades_path}" class="#{active_class(controller, 'grades', 'index')}"
+      span class="icon mr-3"
+        i class="fe fe-grid"
+      | 年级科目管理

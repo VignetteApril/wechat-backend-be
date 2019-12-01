@@ -1,0 +1,23 @@
+<%= grid(@subjects, show_filters: :when_filtered) do |g|
+  g.column name: '科目名称', attribute: 'name', ordering: false do |subject|
+    subject.name
+  end
+
+  g.column in_csv: false, html: {style: "width:15px;"}  do |subject|
+    if can?("subjects", "edit") && can_sys?(subject)
+      link_to '查看视频', edit_grade_subject_path(@grade, subject), class: 'btn btn-secondary btn-sm'
+    end
+  end
+
+  g.column in_csv: false, html: {style: "width:15px;"}  do |subject|
+    if can?("subjects", "edit") && can_sys?(subject)
+      link_to '编辑', edit_grade_subject_path(@grade, subject), class: 'btn btn-secondary btn-sm'
+    end
+  end
+
+  g.column in_csv: false, html: {style: "width:15px;"}  do |subject|
+    if can?("sujects", "destroy") && can_sys?(subject)
+      link_to '删除', grade_subject_path(@grade, subject), method: :delete, data: { confirm: '您确认删除吗？' }, class: 'btn btn-danger btn-sm'
+    end
+  end
+end -%>

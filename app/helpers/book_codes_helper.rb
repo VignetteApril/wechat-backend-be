@@ -1,0 +1,2 @@
+module BookCodesHelper
+end

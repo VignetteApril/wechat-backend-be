@@ -1,0 +1,10 @@
+.card
+  .card-header
+    h3.card-title 学习码管理
+  .card-body
+    .row
+      .table-responsive
+        = render partial: "book_codes_grid"
+    .row
+      = link_to '批量创建学习码', new_book_code_path, class: 'btn btn-primary'
+

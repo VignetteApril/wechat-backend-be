@@ -1,0 +1,17 @@
+<%= grid(@book_codes, show_filters: :when_filtered) do |g|
+  g.column name: '学习码', attribute: 'code', ordering: false do |book_code|
+    book_code.code
+  end
+
+  g.column in_csv: false, html: {style: "width:15px;"}  do |book_code|
+    if can?("book_codes", "edit") && can_sys?(book_code)
+      link_to '编辑', edit_book_code_path(user), class: 'btn btn-secondary btn-sm'
+    end
+  end
+
+  g.column in_csv: false, html: {style: "width:15px;"}  do |book_code|
+    if can?("book_codes", "destroy") && can_sys?(book_code)
+      link_to '删除', book_code, method: :delete, data: { confirm: '您确认删除吗？' }, class: 'btn btn-danger btn-sm'
+    end
+  end
+end -%>

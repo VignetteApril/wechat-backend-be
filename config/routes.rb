@@ -47,13 +47,10 @@ Rails.application.routes.draw do
     post :aosignin, on: :collection
   end
 
-  resources :product_groups do
-    get :app_images, on: :member
-  end
-
-  scope :weapp_images, :controller => 'weapp_images' do
-    get :main_carousel
-    get :main_product_show
+  resources :book_codes
+  resources :courses
+  resources :grades do
+    resources :subjects
   end
 
   post 'areas/cities'

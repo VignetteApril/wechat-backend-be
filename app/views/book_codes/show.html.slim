@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Code:
+  = @book_code.code
+p
+  strong Customer:
+  = @book_code.customer_id
+p
+  strong Course:
+  = @book_code.course
+
+=> link_to 'Edit', edit_book_code_path(@book_code)
+'|
+=< link_to 'Back', book_codes_path

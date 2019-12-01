@@ -301,3 +301,7 @@ zh-CN:
         url: 入口地址
         status: 状态
         user_id: 被提醒人
+      subject:
+        name: 科目名称
+        order_no: 顺序号
+        code_prefix: 学习码前缀
