@@ -1,5 +1,7 @@
 class GradesController < ApplicationController
-  before_action :set_grade, only: [:show, :edit, :update, :destroy]
+  before_action :set_grade, only: [:show, :edit, :update, :destroy, :subjects]
+  skip_before_action :authorize, only: [:subjects]
+  skip_before_action :can, only: [:subjects]
 
   # GET /grades
   # GET /grades.json
@@ -62,6 +64,13 @@ class GradesController < ApplicationController
       format.html { redirect_to grades_url, notice: 'Grade was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # GET /grades/1/subjects.json
+  def subjects
+    @subjects = @grade.subjects
+
+    render json: @subjects.to_json
   end
 
   private

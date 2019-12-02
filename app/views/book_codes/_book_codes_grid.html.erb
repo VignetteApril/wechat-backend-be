@@ -5,7 +5,7 @@
 
   g.column in_csv: false, html: {style: "width:15px;"}  do |book_code|
     if can?("book_codes", "edit") && can_sys?(book_code)
-      link_to '编辑', edit_book_code_path(user), class: 'btn btn-secondary btn-sm'
+      link_to '编辑', edit_book_code_path(book_code), class: 'btn btn-secondary btn-sm'
     end
   end
 

@@ -47,9 +47,16 @@ Rails.application.routes.draw do
     post :aosignin, on: :collection
   end
 
-  resources :book_codes
+  resources :book_codes do
+    collection do
+      post :generate_book_codes
+    end
+  end
   resources :courses
   resources :grades do
+    member do
+      get :subjects
+    end
     resources :subjects
   end
 

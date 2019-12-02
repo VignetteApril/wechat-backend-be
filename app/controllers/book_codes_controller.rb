@@ -17,7 +17,7 @@ class BookCodesController < ApplicationController
 
   # GET /book_codes/new
   def new
-    @book_code = BookCode.new
+    @grades = Grade.all
   end
 
   # GET /book_codes/1/edit
@@ -61,6 +61,27 @@ class BookCodesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to book_codes_url, notice: 'Book code was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # POST /book_codes/generate_book_codes
+  # params grade_id     年级的id
+  # params subject_id   科目的id
+  # params code_num     要生成code的条数
+  def generate_book_codes
+    code_num = params[:code_num]
+    if subject_id.present?
+      subject = Subject.find subject_id
+      GenerateBookCodeJob.perform_later code_num, subject
+      redirect_to book_codes_url, notice: '书码生成任务已经开始进行，请稍等...'
+    elsif grade_id.present?
+      grade = Grade.find grade_id
+      grade.subjects.each do |subject|
+        GenerateBookCodeJob.perform_later code_num, subject
+      end
+      redirect_to book_codes_url, notice: '书码生成任务已经开始进行，请稍等...'
+    else
+      redirect_to new_book_code_url, warning: '请选择年级和科目.'
     end
   end
 

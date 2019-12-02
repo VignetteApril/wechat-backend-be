@@ -18,6 +18,7 @@ module Shike
     config.i18n.available_locales = ['en', 'zh-CN']
     config.i18n.default_locale = 'zh-CN'.to_sym
     config.i18n.fallbacks = true
+    config.active_job.queue_adapter = :sidekiq
     # specific slim as dafault template engine for generator
     config.generators do |g|
       g.template_engine = :slim
