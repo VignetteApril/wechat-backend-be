@@ -1,4 +1,4 @@
-<%= grid(@book_codes, show_filters: :when_filtered) do |g|
+<%= grid(@book_codes, show_filters: :when_filtered, hide_csv_button: true) do |g|
   g.column name: '学习码', attribute: 'code', ordering: false
   g.column name: '年级', attribute: 'name', ordering: false, assoc: [:subject, :grade]
   g.column name: '科目', attribute: 'name', ordering: false, assoc: :subject

@@ -2,7 +2,7 @@
   - if @subject.errors.any?
     #error_explanation.alert.alert-warning
       h4
-        | 该角色保存时出错：
+        | 该科目保存时出错：
         = pluralize(@subject.errors.count, "个错误")
       ul
         - @subject.errors.full_messages.each do |message|

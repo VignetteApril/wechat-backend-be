@@ -29,7 +29,7 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
-    @subject = Subject.new(subject_params)
+    @subject = @grade.subjects.new(subject_params)
 
     respond_to do |format|
       if @subject.save

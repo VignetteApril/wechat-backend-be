@@ -3,8 +3,9 @@
     h3.card-title 学习码管理
   .card-body
     .row
+      button.mr-2.btn.btn-primary.wg-external-csv-export-button data-grid-name='book_codes' 导出当前数据
+      = link_to '批量创建学习码', new_book_code_path, class: 'btn btn-primary'
+    .row
       .table-responsive
         = render partial: "book_codes_grid"
-    .row
-      = link_to '批量创建学习码', new_book_code_path, class: 'btn btn-primary'
 

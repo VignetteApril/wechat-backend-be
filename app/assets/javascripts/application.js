@@ -15,7 +15,6 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
 //= require wice_grid
 //= require bootstrap-datepicker
 //= require select2
@@ -35,21 +34,17 @@
 
 
 // 处理select2在turbolinks的bug
-$(document).on("turbolinks:before-cache", function() {
-    $('select.select2-hidden-accessible').select2('destroy');
+$('select.select2-hidden-accessible').select2('destroy');
+
+$('select').select2({
+    theme: 'bootstrap'
 });
 
-$(document).on('turbolinks:load', function () {
-    $('select').select2({
-        theme: 'bootstrap'
-    });
-
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        language: 'zh-CN',
-        autoclose: true,
-        todayHighlight: true
-    });
+$('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    language: 'zh-CN',
+    autoclose: true,
+    todayHighlight: true
 });
 
 // change select2 data via ajax, target select2 element data will refresh depend the change of orginal select2 element
@@ -62,7 +57,7 @@ $(document).on('turbolinks:load', function () {
 function appendDataToSelect2(request_url, selected_id, target_select, column_name, target_hash_key, orginal_select2_element = '') {
     if (selected_id) {
         // send the ajax post request to backend
-        $.post(request_url,
+        $.get(request_url,
             {
                 id: selected_id,
             },

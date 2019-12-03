@@ -9,6 +9,8 @@ class BookCodesController < ApplicationController
                                              enable_export_to_csv: true,
                                              csv_file_name: 'book_codes',
                                              include: [:subject, { subject: :grade }])
+
+    export_grid_if_requested('book_codes' => 'book_codes_grid')
   end
 
   # GET /book_codes/1
