@@ -1,6 +1,6 @@
 class BookCode < ApplicationRecord
   # relation ship
-  belongs_to :subject, dependent: :destroy
+  belongs_to :subject
 
   # validates
   validates :code, uniqueness: { case_sensitive: true }
@@ -11,8 +11,9 @@ class BookCode < ApplicationRecord
   # call back methods
   def create_unique_code
     loop do
-      self.code = SecureRandom.hex(5)
-      break unless self.class.exists?(code: self.subject.code_prefix + code)
+      random_code = SecureRandom.hex(5)
+      self.code = "#{self.subject.code_prefix}#{random_code}"
+      break unless self.class.exists?(self.code)
     end
   end
 end

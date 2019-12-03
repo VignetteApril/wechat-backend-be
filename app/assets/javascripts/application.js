@@ -71,6 +71,7 @@ function appendDataToSelect2(request_url, selected_id, target_select, column_nam
                 target_select.empty().trigger('change');
                 // append empty option element to select2
                 target_select.append(document.createElement("option"));
+                console.log(data);
                 // append date to the empty select2 element
                 $.each(data[target_hash_key],  function(i, value){
                     var tempOption = document.createElement("option");

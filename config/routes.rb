@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   resources :courses
   resources :grades do
     member do
-      get :subjects
+      post :subjects
     end
     resources :subjects
   end

@@ -7,23 +7,20 @@
     = simple_form_for(:book_code, url: generate_book_codes_book_codes_path, method: :post) do |f|
       .form-inputs
         = f.input :grade_id, label: '年级', as: :select, collection: @grades
-        = f.input :subject_id, label: '科目', as: :select, collection: @subjects
+        = f.input :subject_id, label: '科目', as: :select, collection: []
         = f.input :code_num, label: '生成条数', placeholder: '请不要输入大于1000条的数据，否则会造成服务器压力!'
       .form-actions
         = f.button :submit, '确认', class: 'btn btn-success'
 
 javascript:
-    // var city_select2 = $("#main_case_city_id");
-    // var district_select2 = $("#main_case_district_id");
-    // var request_url_cities = window.location.origin + '/areas/cities.json';
-    //
-    // // listening the select2 change method
-    // province_select2.on("select2:select", function (e) {
-    //     // refresh project select2 element
-    //     appendDataToSelect2(request_url_cities, e['currentTarget']['value'], city_select2, 'name', 'cities');
-    //     district_select2.empty().trigger('change');
-    // });
-    //
-    // city_select2.on("select2:select", function (e) {
-    //     appendDataToSelect2(request_url_districts, e['currentTarget']['value'], district_select2, 'name', 'districts');
-    // });
+    var grade_select2 = $("#book_code_grade_id");
+    var subject_select2 = $("#book_code_subject_id");
+
+    // listening the select2 change method
+    grade_select2.on("select2:select", function (e) {
+        // refresh project select2 element
+        var current_value = e['currentTarget']['value'];
+        var request_url_subjects = window.location.origin + '/grades/' + current_value  + '/subjects.json';
+        appendDataToSelect2(request_url_subjects, current_value, subject_select2, 'name', 'subjects');
+        subject_select2.empty().trigger('change');
+    });

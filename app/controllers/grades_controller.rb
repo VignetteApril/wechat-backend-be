@@ -70,7 +70,7 @@ class GradesController < ApplicationController
   def subjects
     @subjects = @grade.subjects
 
-    render json: @subjects.to_json
+    render json: { subjects: @subjects, message: '数据请求成功！', code: 0 }.to_json
   end
 
   private

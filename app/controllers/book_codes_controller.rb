@@ -7,7 +7,8 @@ class BookCodesController < ApplicationController
     @book_codes = initialize_grid( BookCode, per_page: 20,
                                              name: 'book_codes',
                                              enable_export_to_csv: true,
-                                             csv_file_name: 'book_codes' )
+                                             csv_file_name: 'book_codes',
+                                             include: [:subject, { subject: :grade }])
   end
 
   # GET /book_codes/1
@@ -31,7 +32,7 @@ class BookCodesController < ApplicationController
 
     respond_to do |format|
       if @book_code.save
-        format.html { redirect_to @book_code, notice: 'Book code was successfully created.' }
+        format.html { redirect_to @book_code, notice: '学习码已经成功的创建了！' }
         format.json { render :show, status: :created, location: @book_code }
       else
         format.html { render :new }
@@ -45,7 +46,7 @@ class BookCodesController < ApplicationController
   def update
     respond_to do |format|
       if @book_code.update(book_code_params)
-        format.html { redirect_to @book_code, notice: 'Book code was successfully updated.' }
+        format.html { redirect_to @book_code, notice: '学习码已经成功的更新！' }
         format.json { render :show, status: :ok, location: @book_code }
       else
         format.html { render :edit }
@@ -59,7 +60,7 @@ class BookCodesController < ApplicationController
   def destroy
     @book_code.destroy
     respond_to do |format|
-      format.html { redirect_to book_codes_url, notice: 'Book code was successfully destroyed.' }
+      format.html { redirect_to book_codes_url, notice: '学习码已经成功删除了！' }
       format.json { head :no_content }
     end
   end
@@ -69,7 +70,10 @@ class BookCodesController < ApplicationController
   # params subject_id   科目的id
   # params code_num     要生成code的条数
   def generate_book_codes
-    code_num = params[:code_num]
+    code_num = book_code_params[:code_num]
+    subject_id  = book_code_params[:subject_id]
+    grade_id = book_code_params[:grade_id]
+
     if subject_id.present?
       subject = Subject.find subject_id
       GenerateBookCodeJob.perform_later code_num, subject
@@ -81,7 +85,7 @@ class BookCodesController < ApplicationController
       end
       redirect_to book_codes_url, notice: '书码生成任务已经开始进行，请稍等...'
     else
-      redirect_to new_book_code_url, warning: '请选择年级和科目.'
+      redirect_to new_book_code_url, alert: '请选择年级和科目, 以及生成条目.'
     end
   end
 
@@ -93,6 +97,6 @@ class BookCodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_code_params
-      params.require(:book_code).permit(:code, :customer_id, :course_id)
+      params.require(:book_code).permit(:code, :customer_id, :course_id, :subject_id, :grade_id, :code_num)
     end
 end
