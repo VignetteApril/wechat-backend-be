@@ -1,15 +1,14 @@
-= form_for @course do |f|
-  - if @course.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@course.errors.count, "error")} prohibited this course from being saved:"
+= simple_form_for([@grade, @subject, @course]) do |f|
+  - if @subject.errors.any?
+    #error_explanation.alert.alert-warning
+      h4
+        | 该视频时出错：
+        = pluralize(@course.errors.count, "个错误")
       ul
         - @course.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :subject
-    = f.text_field :subject
-  .actions = f.submit
+          li
+            = message
+  .form-inputs
+    = f.input :name, label: '视频名称'
+  .form-actions
+    = f.button :submit, '确认', class: 'btn btn-success'

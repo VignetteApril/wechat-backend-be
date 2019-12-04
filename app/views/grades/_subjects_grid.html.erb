@@ -4,8 +4,8 @@
   end
 
   g.column in_csv: false, html: {style: "width:15px;"}  do |subject|
-    if can?("subjects", "edit") && can_sys?(subject)
-      link_to '查看视频', edit_grade_subject_path(@grade, subject), class: 'btn btn-secondary btn-sm'
+    if can?("courses", "index") && can_sys?(subject)
+      link_to '视频管理', grade_subject_courses_path(@grade, subject), class: 'btn btn-secondary btn-sm'
     end
   end
 

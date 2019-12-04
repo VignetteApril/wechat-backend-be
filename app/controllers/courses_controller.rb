@@ -1,10 +1,15 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_grade, only: [:index, :new, :show, :edit, :update, :destroy]
+  before_action :set_subject, only: [:index, :new, :show, :edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @courses = initialize_grid( Course, per_page: 20,
+                                        name: 'courses',
+                                        enable_export_to_csv: false,
+                                        csv_file_name: 'courses')
   end
 
   # GET /courses/1
@@ -14,7 +19,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = @subject.courses.new
   end
 
   # GET /courses/1/edit
@@ -24,11 +29,11 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = @subject.courses.new(course_params)
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -56,7 +61,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: 'Course was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +72,16 @@ class CoursesController < ApplicationController
       @course = Course.find(params[:id])
     end
 
+    def set_grade
+      @grade = Grade.find(params[:grade_id])
+    end
+
+    def set_subject
+      @subject = Subject.find(params[:subject_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :subject_id)
+      params.require(:course).permit(:name, :subject_id, :video)
     end
 end

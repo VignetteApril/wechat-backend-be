@@ -1,5 +1,6 @@
-h1 New course
-
-== render 'form'
-
-= link_to 'Back', courses_path
+= link_to '返回', grade_subject_courses_path(@grade, @subject), class: 'btn btn-primary mb-2'
+.card
+  .card-header
+    .card-title 新建视频
+  .card-body
+    = render 'form'

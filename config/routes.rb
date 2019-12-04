@@ -52,12 +52,14 @@ Rails.application.routes.draw do
       post :generate_book_codes
     end
   end
-  resources :courses
+
   resources :grades do
     member do
       get :subjects
     end
-    resources :subjects
+    resources :subjects do
+      resources :courses
+    end
   end
 
   resources :static_images
