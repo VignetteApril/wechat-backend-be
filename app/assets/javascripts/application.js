@@ -34,18 +34,22 @@
 
 
 // 处理select2在turbolinks的bug
-$('select.select2-hidden-accessible').select2('destroy');
 
-$('select').select2({
-    theme: 'bootstrap'
+$(document).ready(function () {
+    $('select.select2-hidden-accessible').select2('destroy');
+
+    $('select').select2({
+        theme: 'bootstrap'
+    });
+
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        language: 'zh-CN',
+        autoclose: true,
+        todayHighlight: true
+    });
 });
 
-$('.datepicker').datepicker({
-    format: 'yyyy-mm-dd',
-    language: 'zh-CN',
-    autoclose: true,
-    todayHighlight: true
-});
 
 // change select2 data via ajax, target select2 element data will refresh depend the change of orginal select2 element
 // request_url:               the method will send the ajax post request to this url, and get data from the action

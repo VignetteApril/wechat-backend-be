@@ -1,0 +1,7 @@
+.card
+  .card-header
+    .card-title 图片管理
+  .card-body
+    .row
+      = link_to '新建图片', new_static_image_path, class: 'btn btn-primary mb-2'
+      = render partial: "static_images_grid"

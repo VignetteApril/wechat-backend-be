@@ -203,47 +203,11 @@ zh-CN:
       long: "%Y年%b%d日 %H:%M"
       short: "%b%d日 %H:%M"
     pm: 下午
-  delayed/web:
-    views:
-      id: ID
-      job: 任务
-      jobs: 任务队列
-      status: 状态
-      created_at: 创建时间
-      run_at: 运行时间
-      attempts: 尝试次数
-      last_error: 最后的错误
-      server_time: 服务器时间
-      handler: Handler
-      actions: 动作
-      current_queue: 队列
-      buttons:
-        run_next: 运行下一条
-        delete: 删除
-      queue:
-        empty: 队列为空
-      errors:
-        empty: 没有错误
-      statuses:
-        executing: 执行中
-        failed: 失败
-        queued: 排队中
-      confirm:
-        delete: 你确认要删除这个任务吗？
-    flashes:
-      jobs:
-        queued:
-          alert: '任务无法排队，因为他已经是：%{status} 的状态了'
-          notice: '任务已经排队'
-        destroyed:
-          alert: '任务无法删除，因为他已经是：%{status} 的状态了'
-          notice: '任务已经删除'
   activerecord:
     enums:
-      app_image:
-        usage_type:
-          main_carousel: '主页轮播图'
-          main_product_show: '主页产品展示区'
+      static_image:
+        img_type:
+          main_page_banner: 主页轮播图
     models:
       user: "用户"
       department: "部门"

@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Img type:
+  = @static_image.img_type
+p
+  strong Order no:
+  = @static_image.order_no
+
+=> link_to 'Edit', edit_static_image_path(@static_image)
+'|
+=< link_to 'Back', static_images_path

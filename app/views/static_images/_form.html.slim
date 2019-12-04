@@ -1,0 +1,16 @@
+= simple_form_for(@static_image) do |f|
+  - if @static_image.errors.any?
+    #error_explanation.alert.alert-warning
+      h4
+        | 该资源保存时出错：
+        = pluralize(@grade.errors.count, "个错误")
+      ul
+        - @grade.errors.full_messages.each do |message|
+          li
+            = message
+  .form-inputs
+    = f.input :img_type, label: '图片类型', as: :select, collection: StaticImage.img_type_options
+    = f.input :order_no, label: '顺序号'
+    = f.input :img, label: '上传图片', as: :file, input_html: {direct_upload: true}
+  .form-actions
+    = f.button :submit, '确认', class: 'btn btn-success'

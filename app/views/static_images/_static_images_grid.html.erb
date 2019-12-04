@@ -1,0 +1,22 @@
+<%= grid(@static_images, show_filters: :when_filtered, hide_csv_button: true) do |g|
+  g.column name: '顺序号', attribute: 'order_no', ordering: false
+  g.column name: '图片类型', attribute: 'img_type', ordering: false do |static_image|
+    static_image.img_type_name
+  end
+
+  g.column name: '图片类型', attribute: 'img_type', ordering: false, filter: false do |static_image|
+    static_image.img.attached? ? (image_tag url_for(static_image.img), style: 'width: 100px; height: 50px') : '暂无图片'
+  end
+
+  g.column in_csv: false, html: {style: "width:15px;"}  do |static_image|
+    if can?("static_images", "edit") && can_sys?(static_image)
+      link_to '编辑', edit_static_image_path(static_image), class: 'btn btn-secondary btn-sm'
+    end
+  end
+
+  g.column in_csv: false, html: {style: "width:15px;"}  do |static_image|
+    if can?("static_images", "destroy") && can_sys?(static_image)
+      link_to '删除', static_image, method: :delete, data: { confirm: '您确认删除吗？' }, class: 'btn btn-danger btn-sm'
+    end
+  end
+end -%>

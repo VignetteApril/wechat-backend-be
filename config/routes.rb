@@ -60,6 +60,8 @@ Rails.application.routes.draw do
     resources :subjects
   end
 
+  resources :static_images
+
   post 'areas/cities'
   post 'areas/districts'
 
