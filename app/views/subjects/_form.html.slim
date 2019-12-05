@@ -12,5 +12,6 @@
     = f.input :name, label: '科目名称'
     = f.input :order_no, label: '顺序号'
     = f.input :code_prefix, label: '学习码前缀', placeholder: '大写字母，两位'
+    = f.input :description, label: '课程简介', as: :text, number: 3
   .form-actions
     = f.button :submit, '确认', class: 'btn btn-success'
