@@ -1,5 +1,9 @@
 <%= grid(@courses, show_filters: :when_filtered) do |g|
   g.column name: '视频名称', attribute: 'name', ordering: false
+  g.column name: '视频顺序号', attribute: 'order_no', ordering: false
+  g.column name: '视频文件', ordering: false do |course|
+    video_tag(url_for(course.video), controls: true, preload: 'none', size: '300x170')
+  end
 
   g.column in_csv: false, html: {style: "width:15px;"}  do |course|
     if can?("courses", "edit") && can_sys?(course)

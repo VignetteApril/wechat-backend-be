@@ -10,5 +10,7 @@
             = message
   .form-inputs
     = f.input :name, label: '视频名称'
+    = f.input :order_no, label: '视频顺序号'
+    = f.input :video, label: '上传视频', as: :file, input_html: {direct_upload: true}
   .form-actions
     = f.button :submit, '确认', class: 'btn btn-success'

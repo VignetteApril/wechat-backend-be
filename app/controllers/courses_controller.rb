@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :set_grade, only: [:index, :new, :show, :edit, :update, :destroy]
-  before_action :set_subject, only: [:index, :new, :show, :edit, :update, :destroy]
+  before_action :set_grade, only: [:index, :new, :show, :edit, :update, :destroy, :create]
+  before_action :set_subject, only: [:index, :new, :show, :edit, :update, :destroy, :create]
 
   # GET /courses
   # GET /courses.json
@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: 'Course was successfully created.' }
+        format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: '课程视频已经被成功创建了！' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: 'Course was successfully updated.' }
+        format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: '课程视频已经被成功更新了！' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to grade_subject_courses_url(@grade, @subject), notice: '课程视频已经被成功删除了！' }
       format.json { head :no_content }
     end
   end
@@ -82,6 +82,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :subject_id, :video)
+      params.require(:course).permit(:name, :subject_id, :video, :order_no)
     end
 end
