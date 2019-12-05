@@ -64,6 +64,14 @@ Rails.application.routes.draw do
 
   resources :static_images
 
+  namespace :api do
+    namespace :v1 do
+      resources :main_page, only: [] do
+        get :carousel
+      end
+    end
+  end
+
   post 'areas/cities'
   post 'areas/districts'
 
