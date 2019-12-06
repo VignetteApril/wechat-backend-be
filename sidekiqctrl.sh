@@ -6,7 +6,7 @@ case "$1" in
         ;;
     start)
         echo -n "starting sidekiq..."
-        RAILS_ENV=production bundle exec sidekiq -C /root/deploy_apps/youshule/shared/config/sidekiq.yml
+        RAILS_ENV=production bundle exec sidekiq -C /root/deploy_apps/youshule/shared/config/sidekiq.yml --daemon
         ;;
     stop)
         echo "stoping puma..."
@@ -15,6 +15,6 @@ case "$1" in
     reload)
         echo "reloading puma..."
         kill `cat "/root/deploy_apps/youshule/shared/tmp/pids/puma.pid"`
-         RAILS_ENV=production bundle exec sidekiq -C/root/deploy_apps/youshule/shared/config/sidekiq.yml
+         RAILS_ENV=production bundle exec sidekiq -C/root/deploy_apps/youshule/shared/config/sidekiq.yml --daemon
         ;;
 esac
