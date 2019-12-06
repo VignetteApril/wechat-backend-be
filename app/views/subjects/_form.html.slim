@@ -13,5 +13,6 @@
     = f.input :order_no, label: '顺序号'
     = f.input :code_prefix, label: '学习码前缀', placeholder: '大写字母，两位'
     = f.input :description, label: '课程简介', as: :text, number: 3
+    = f.input :img, label: '课程封面', as: :file, input_html: {direct_upload: true}
   .form-actions
     = f.button :submit, '确认', class: 'btn btn-success'
