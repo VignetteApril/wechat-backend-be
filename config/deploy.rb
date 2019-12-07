@@ -151,6 +151,7 @@ end
    task :restart do
      command 'echo "-----> reStart Puma"'
      command "cd #{current_path} && RAILS_ENV=production && #{shared_path}/config/pumactrl.sh reload"
+     command "sleep 1"
    end
  end
 
