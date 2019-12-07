@@ -5,3 +5,6 @@ production:
   :concurrency: 20
 :queues:
   - generate_book_code
+
+
+logfile: ./log/sidekiq.log
