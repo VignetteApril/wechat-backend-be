@@ -21,6 +21,7 @@
                   td = link_to '删除', grade, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '年级删除后其中所有科目，以及科目中的视频都会被删除！您确认么？' }
                   td = link_to '查看科目', grades_path(grade_id: grade.id), class: 'btn btn-secondary btn-sm'
       .col-md-6
-        = link_to '新建科目', new_grade_subject_path(@grade), class: 'btn btn-primary'
+        - if @grade.present?
+          = link_to '新建科目', new_grade_subject_path(@grade), class: 'btn btn-primary'
         .table-responsive
           = render partial: "subjects_grid", :locals => {grade: @grade, subjects: @subjects}
