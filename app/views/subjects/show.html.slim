@@ -1,0 +1,13 @@
+.card
+  .card-header
+    h3.card-title 科目图片
+  .card-body
+    h5 封面图
+    .row
+      = image_tag url_for(@subject.img), height: :auto, width: '200px'
+
+    hr
+    h5 详情图
+    .row
+      - @subject.detail_imgs.each do |img|
+        = image_tag url_for(img), height: :auto, width: '200px', class: 'mr-2 mt-2'

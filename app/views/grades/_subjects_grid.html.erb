@@ -1,5 +1,7 @@
 <%= grid(@subjects, show_filters: :always) do |g|
-  g.column name: '科目名称', attribute: 'name', ordering: false
+  g.column name: '科目名称', attribute: 'name', ordering: false do |subject|
+    link_to subject.name, grade_subject_path(@grade, subject)
+  end
   g.column name: '科目顺序', attribute: 'order_no', ordering: false
   g.column name: '科目前缀', attribute: 'code_prefix', ordering: false
 

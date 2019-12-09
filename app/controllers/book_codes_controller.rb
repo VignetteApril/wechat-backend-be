@@ -84,7 +84,7 @@ class BookCodesController < ApplicationController
       grade = Grade.find grade_id
       last_book_code = BookCode.last
       batch_code = last_book_code.nil? ? 1 : last_book_code.batch_code + 1
-      
+
       grade.subjects.each do |subject|
         GenerateBookCodeJob.perform_later code_num, subject, batch_code
       end
@@ -102,6 +102,11 @@ class BookCodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_code_params
-      params.require(:book_code).permit(:code, :customer_id, :course_id, :subject_id, :grade_id, :code_num)
+      params.require(:book_code).permit(:code,
+                                        :customer_id,
+                                        :course_id,
+                                        :subject_id,
+                                        :grade_id,
+                                        :code_num)
     end
 end
