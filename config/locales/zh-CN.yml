@@ -208,6 +208,7 @@ zh-CN:
       static_image:
         img_type:
           main_page_banner: 主页轮播图
+          main_page_video: 主页轮播视频
     models:
       user: "用户"
       department: "部门"

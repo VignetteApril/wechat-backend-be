@@ -2,8 +2,9 @@
   .container
     .d-flex
       page-title.text-center
-        = image_tag("logo.png", class: 'header-brand-img', alt: "forensic logo")
-        span 邮书乐小程序支撑平台
+        = link_to book_codes_path
+          = image_tag("logo.png", class: 'header-brand-img', alt: "forensic logo")
+          span 邮书乐小程序支撑平台
       .d-flex.order-lg-2.ml-auto
         .dropdown.d-none.d-md-flex
           a class="nav-link icon" data-toggle="dropdown"

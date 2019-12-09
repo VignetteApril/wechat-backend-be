@@ -72,6 +72,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :customers, only: [:index]
+
   post 'areas/cities'
   post 'areas/districts'
 

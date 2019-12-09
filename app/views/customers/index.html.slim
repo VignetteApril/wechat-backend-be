@@ -1,0 +1,9 @@
+.card
+  .card-header
+    h3.card-title 用户查询
+  .card-body
+    .row
+      button.mr-2.btn.btn-primary.wg-external-csv-export-button data-grid-name='customers' 导出当前数据
+    .row
+      .table-responsive
+        = render partial: "customers_grid"

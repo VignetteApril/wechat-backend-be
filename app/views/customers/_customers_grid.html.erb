@@ -1,0 +1,5 @@
+<%= grid(@customers, show_filters: :always, hide_csv_button: true) do |g|
+  g.column name: '姓名', attribute: 'name', ordering: false
+  g.column name: '手机号', attribute: 'phone_number', ordering: false
+  g.column name: '微信open_id', attribute: 'wx_open_id', ordering: false
+end -%>
