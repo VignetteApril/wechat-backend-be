@@ -2,6 +2,7 @@
   g.column name: '学习码', attribute: 'code', ordering: false
   g.column name: '年级', attribute: 'name', ordering: false, assoc: [:subject, :grade]
   g.column name: '科目', attribute: 'name', ordering: false, assoc: :subject
+  g.column name: '批次号', attribute: 'batch_code', ordering: true
 
   g.column in_csv: false, html: {style: "width:15px;"}  do |book_code|
     if can?("book_codes", "edit") && can_sys?(book_code)

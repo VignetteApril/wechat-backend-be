@@ -82,8 +82,11 @@ class BookCodesController < ApplicationController
       redirect_to book_codes_url, notice: '书码生成任务已经开始进行，请稍等...'
     elsif grade_id.present?
       grade = Grade.find grade_id
+      last_book_code = BookCode.last
+      batch_code = last_book_code.nil? ? 1 : last_book_code.batch_code + 1
+      
       grade.subjects.each do |subject|
-        GenerateBookCodeJob.perform_later code_num, subject
+        GenerateBookCodeJob.perform_later code_num, subject, batch_code
       end
       redirect_to book_codes_url, notice: '书码生成任务已经开始进行，请稍等...'
     else
