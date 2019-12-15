@@ -53,4 +53,9 @@ module ApplicationHelper
       return 'nav-link'
     end
   end
+
+  # video url helper
+  def video_url_for blob_object
+    request.protocol + request.host_with_port + '/api/v1/video/play?video_key=' + blob_object.blob.key
+  end
 end
