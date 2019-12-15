@@ -1,11 +1,16 @@
 <%= grid(@static_images, show_filters: :when_filtered, hide_csv_button: true) do |g|
   g.column name: '顺序号', attribute: 'order_no', ordering: false
-  g.column name: '图片类型', attribute: 'img_type', ordering: false do |static_image|
+  g.column name: '图片或视频类型', attribute: 'img_type', ordering: false do |static_image|
     static_image.img_type_name
   end
 
-  g.column name: '图片类型', attribute: 'img_type', ordering: false, filter: false do |static_image|
-    static_image.img.attached? ? (image_tag url_for(static_image.img), style: 'width: 100px; height: 50px') : '暂无图片'
+  g.column name: '图片或视频', attribute: 'img_type', ordering: false, filter: false do |static_image|
+    case static_image.img_type
+    when 'main_page_banner'
+        static_image.img.attached? ? (image_tag url_for(static_image.img), style: 'width: 100px; height: 50px') : '暂无图片'
+    when 'main_page_video'
+        static_image.img.attached? ? (video_tag(url_for(static_image.img), controls: true, preload: 'none', size: '300x170')) : '暂无视频'
+    end
   end
 
   g.column in_csv: false, html: {style: "width:15px;"}  do |static_image|

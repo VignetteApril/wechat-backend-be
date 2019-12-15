@@ -62,12 +62,24 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :static_images
+  resources :static_images do
+    collection do
+      get :play
+    end
+  end
 
   namespace :api do
     namespace :v1 do
       resources :main_page, only: [] do
-        get :carousel
+        collection do
+          get :top_video
+        end
+      end
+
+      resources :video, only: [] do
+        collection do
+          get :play
+        end
       end
     end
   end
