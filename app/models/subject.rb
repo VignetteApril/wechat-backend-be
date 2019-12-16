@@ -3,7 +3,8 @@ class Subject < ApplicationRecord
   belongs_to :grade
   has_many :courses, dependent: :destroy
   has_many :book_codes, dependent: :destroy
-  has_one_attached :img
+  has_one_attached :courses_page_cover
+  has_one_attached :main_page_cover
   has_many_attached :detail_imgs
 
   # validates

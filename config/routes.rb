@@ -73,6 +73,7 @@ Rails.application.routes.draw do
       resources :main_page, only: [] do
         collection do
           get :top_video
+          get :subjects
         end
       end
 
