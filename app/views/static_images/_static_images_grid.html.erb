@@ -7,9 +7,9 @@
   g.column name: '图片或视频', attribute: 'img_type', ordering: false, filter: false do |static_image|
     case static_image.img_type
     when 'main_page_banner'
-        static_image.img.attached? ? (image_tag url_for(static_image.img), style: 'width: 100px; height: 50px') : '暂无图片'
+        static_image.img.attached? ? (image_tag  static_url_for(static_image.img), style: 'width: 100px; height: 50px') : '暂无图片'
     when 'main_page_video'
-        static_image.img.attached? ? (video_tag(url_for(static_image.img), controls: true, preload: 'none', size: '300x170')) : '暂无视频'
+        static_image.img.attached? ? (video_tag( static_url_for(static_image.img), controls: true, preload: 'none', size: '300x170')) : '暂无视频'
     end
   end
 

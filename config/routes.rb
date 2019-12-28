@@ -82,6 +82,15 @@ Rails.application.routes.draw do
           get :play
         end
       end
+
+      resources :courses, only: [] do
+        collection do
+          get :data
+        end
+      end
+
+      resources :subjects, only: [:show] do
+      end
     end
   end
 

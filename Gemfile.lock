@@ -275,6 +275,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    streamio-ffmpeg (3.0.2)
+      multi_json (~> 1.8)
     tabler-rubygem (0.1.4)
       autoprefixer-rails (>= 6.0.3)
     temple (0.8.2)
@@ -346,6 +348,7 @@ DEPENDENCIES
   sidekiq (= 5.2.7)
   simple_form (= 4.1.0)
   slim-rails (= 3.2.0)
+  streamio-ffmpeg
   tabler-rubygem
   turbolinks (= 5.2.0)
   uglifier (= 4.2.0)

@@ -54,20 +54,19 @@ module ApplicationHelper
     end
   end
 
-  # video url helper
-  def video_url_for blob_object
-    if blob_object.attached?
-      request.protocol + request.host_with_port + '/api/v1/video/play?video_key=' + blob_object.blob.key
+  def  static_url_for blob_object
+    if blob_object.attached? && !blob_object.nil?
+      'https://static.youleshu.vip/' + blob_object.key
     else
       ''
     end
   end
 
-  def image_url_for blob_object
-    if blob_object.attached?
-      request.protocol + request.host_with_port + url_for(blob_object)
-    else
-      ''
-    end
-  end
+  # def url_for blob_object
+  #   if blob_object.attached?
+  #     request.protocol + request.host_with_port + url_for(blob_object)
+  #   else
+  #     ''
+  #   end
+  # end
 end

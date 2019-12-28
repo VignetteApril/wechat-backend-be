@@ -1,5 +1,5 @@
 json.data do
-  json.video_url video_url_for(@top_video.first.img)
+  json.video_url   static_url_for(@top_video.first.img)
 end
 
 json.code 0

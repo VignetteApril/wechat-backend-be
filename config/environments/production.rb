@@ -41,13 +41,12 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   # 在生产环境下使用七牛云
-  config.active_storage.service = :local
-
-  # config.active_storage.analyzers = [
-  #     ActiveStorage::Analyzer::QiniuImageAnalyzer,
-  #     ActiveStorage::Analyzer::QiniuVideoAnalyzer
-  # ]
-
+  # config.active_storage.service = :local
+  config.active_storage.service = :qiniu
+  config.active_storage.analyzers = [
+      ActiveStorage::Analyzer::QiniuImageAnalyzer,
+      ActiveStorage::Analyzer::QiniuVideoAnalyzer
+  ]
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil

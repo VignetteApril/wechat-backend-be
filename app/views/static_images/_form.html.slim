@@ -11,6 +11,6 @@
   .form-inputs
     = f.input :img_type, label: '文件类型', as: :select, collection: StaticImage.img_type_options
     = f.input :order_no, label: '顺序号'
-    = f.input :img, label: '上传文件', as: :file, input_html: {direct_upload: true}
+    = f.input :img, label: '上传文件', as: :file
   .form-actions
     = f.button :submit, '确认', class: 'btn btn-success'

@@ -11,6 +11,7 @@
   .form-inputs
     = f.input :name, label: '视频名称'
     = f.input :order_no, label: '视频顺序号'
-    = f.input :video, label: '上传视频', as: :file, input_html: {direct_upload: true}
+    = f.input :course_type, label: '视频类型', as: :select, collection: Course.course_type_options
+    = f.input :video, label: '上传视频', as: :file
   .form-actions
     = f.button :submit, '确认', class: 'btn btn-success'

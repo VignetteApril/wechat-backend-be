@@ -209,6 +209,11 @@ zh-CN:
         img_type:
           main_page_banner: 主页轮播图
           main_page_video: 主页轮播视频
+          courses_page_banner: 学习页面banner
+      course:
+        course_type:
+          sample_video: 试看视频
+          formal_video: 正式视频
     models:
       user: "用户"
       department: "部门"

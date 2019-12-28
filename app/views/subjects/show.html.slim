@@ -5,7 +5,7 @@
     h5 主页封面图
     .row
       - if @subject.main_page_cover.attached?
-        = image_tag url_for(@subject.main_page_cover), height: :auto, width: '200px'
+        = image_tag  static_url_for(@subject.main_page_cover), height: :auto, width: '200px'
       - else
         span 暂无
 
@@ -13,7 +13,7 @@
     h5 主页封面图
     .row
       - if @subject.courses_page_cover.attached?
-        = image_tag url_for(@subject.courses_page_cover), height: :auto, width: '200px'
+        = image_tag  static_url_for(@subject.courses_page_cover), height: :auto, width: '200px'
       - else
         span 暂无
 
@@ -21,4 +21,4 @@
     h5 详情图
     .row
       - @subject.detail_imgs.each do |img|
-        = image_tag url_for(img), height: :auto, width: '200px', class: 'mr-2 mt-2'
+        = image_tag  static_url_for(img), height: :auto, width: '200px', class: 'mr-2 mt-2'
