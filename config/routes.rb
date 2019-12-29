@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     end
     resources :subjects do
       resources :courses
+      delete :destroy_detail_imgs, on: :member
     end
   end
 
@@ -90,6 +91,10 @@ Rails.application.routes.draw do
       end
 
       resources :subjects, only: [:show] do
+      end
+
+      resources :wechats, only: [] do
+        get :wechat_auth, on: :collection
       end
     end
   end

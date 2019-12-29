@@ -1,0 +1,12 @@
+default: &default
+  appid: "wx3b5d48894105a505"
+  secret: "27c05c5a49ca7df48ee1134334663819"
+
+production:
+  <<: *default
+
+development:
+  <<: *default
+
+test:
+  <<: *default

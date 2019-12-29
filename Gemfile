@@ -44,6 +44,7 @@ gem 'mina-puma', require: false
 gem 'sidekiq', '5.2.7'
 gem 'mina-sidekiq'
 gem 'streamio-ffmpeg'
+gem 'jwt'
 
 group :development, :test do
   gem 'minitest-rails'

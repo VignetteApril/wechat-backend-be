@@ -55,18 +55,10 @@ module ApplicationHelper
   end
 
   def  static_url_for blob_object
-    if blob_object.attached? && !blob_object.nil?
+    if !blob_object.nil?
       'https://static.youleshu.vip/' + blob_object.key
     else
       ''
     end
   end
-
-  # def url_for blob_object
-  #   if blob_object.attached?
-  #     request.protocol + request.host_with_port + url_for(blob_object)
-  #   else
-  #     ''
-  #   end
-  # end
 end

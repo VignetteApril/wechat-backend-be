@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :edit, :update, :destroy]
-  before_action :set_grid, only: [:new, :edit, :create, :update]
+  before_action :set_subject, only: [:show, :edit, :update, :destroy, :destroy_detail_imgs]
+  before_action :set_grid, only: [:new, :edit, :create, :update, :destroy_detail_imgs]
 
   # GET /subjects
   # GET /subjects.json
@@ -62,6 +62,14 @@ class SubjectsController < ApplicationController
     @subject.destroy
     respond_to do |format|
       format.html { redirect_to grades_path, notice: '科目已经成功的删除了！' }
+      format.json { head :no_content }
+    end
+  end
+
+  def destroy_detail_imgs
+    @subject.detail_imgs.purge
+    respond_to do |format|
+      format.html { redirect_to grade_subject_url(@grade, @subject), notice: '科目的详情图片已经删除了！' }
       format.json { head :no_content }
     end
   end

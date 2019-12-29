@@ -20,5 +20,7 @@
     hr
     h5 详情图
     .row
+      = link_to '删除详情图', destroy_detail_imgs_grade_subject_path, method: :delete, data: { confirm: '您确认删除吗？' }, class: 'btn btn-danger btn-sm'
+    .row
       - @subject.detail_imgs.each do |img|
         = image_tag  static_url_for(img), height: :auto, width: '200px', class: 'mr-2 mt-2'
