@@ -3,4 +3,5 @@
   g.column name: '图片', ordering: false, filter: false do |feedback|
     feedback.image.attached? ? (image_tag  static_url_for(feedback.image), style: 'width: 100px; height: 50px', class: 'image-modal') : '暂无图片'
   end
+  g.column name: '用户', attribute: 'phone_number', ordering: false, assoc: :customer
 end -%>
