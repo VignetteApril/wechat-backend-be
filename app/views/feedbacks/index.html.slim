@@ -1,23 +1,15 @@
-h1 Listing feedbacks
+= render 'layouts/preview_image_modal'
 
-table
-  thead
-    tr
-      th Message
-      th Customer
-      th
-      th
-      th
+.card
+  .card-header
+    h3.card-title 用户反馈
+  .card-body
+    .row
+      .table-responsive
+        = render partial: "feedbacks_grid"
 
-  tbody
-    - @feedbacks.each do |feedback|
-      tr
-        td = feedback.message
-        td = feedback.customer
-        td = link_to 'Show', feedback
-        td = link_to 'Edit', edit_feedback_path(feedback)
-        td = link_to 'Destroy', feedback, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Feedback', new_feedback_path
+javascript:
+    $('.image-modal').click(function (e) {
+        $('#imagepreview').attr('src', e.currentTarget.currentSrc);
+        $('#imagemodal').modal('show');
+    });

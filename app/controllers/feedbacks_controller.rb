@@ -4,7 +4,9 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all
+    @feedbacks = initialize_grid( Feedback, per_page: 20,
+                                  name: 'feedbacks',
+                                  enable_export_to_csv: false )
   end
 
   # GET /feedbacks/1

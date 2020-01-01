@@ -1,0 +1,6 @@
+<%= grid(@feedbacks, show_filters: :always, hide_csv_button: true) do |g|
+  g.column name: '反馈', attribute: 'message', ordering: false
+  g.column name: '图片', ordering: false, filter: false do |feedback|
+    feedback.image.attached? ? (image_tag  static_url_for(feedback.image), style: 'width: 100px; height: 50px', class: 'image-modal') : '暂无图片'
+  end
+end -%>
