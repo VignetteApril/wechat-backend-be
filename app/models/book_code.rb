@@ -1,6 +1,7 @@
 class BookCode < ApplicationRecord
   # relation ship
   belongs_to :subject
+  has_one :code_customer
 
   # validates
   validates :code, uniqueness: { case_sensitive: true }

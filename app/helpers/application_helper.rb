@@ -61,4 +61,10 @@ module ApplicationHelper
       ''
     end
   end
+
+  def bool_badge_helper bool_object
+    cn_words = bool_object ? '是' : '否'
+    span_class = bool_object ? 'success' : 'danger'
+    content_tag :span, cn_words, class: "badge badge-#{span_class}"
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_01_051954) do
+ActiveRecord::Schema.define(version: 2020_01_01_074725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,18 @@ ActiveRecord::Schema.define(version: 2020_01_01_051954) do
     t.bigint "subject_id"
     t.boolean "is_active", default: false
     t.integer "batch_code"
+    t.boolean "is_used", default: false
+    t.boolean "is_actived", default: true
     t.index ["subject_id"], name: "index_book_codes_on_subject_id"
+  end
+
+  create_table "code_customers", force: :cascade do |t|
+    t.bigint "book_code_id"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_code_id"], name: "index_code_customers_on_book_code_id"
+    t.index ["customer_id"], name: "index_code_customers_on_customer_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -251,6 +262,8 @@ ActiveRecord::Schema.define(version: 2020_01_01_051954) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "book_codes", "subjects"
+  add_foreign_key "code_customers", "book_codes"
+  add_foreign_key "code_customers", "customers"
   add_foreign_key "courses", "subjects"
   add_foreign_key "feedbacks", "customers"
   add_foreign_key "subjects", "grades"

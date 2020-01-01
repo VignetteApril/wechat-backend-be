@@ -17,11 +17,6 @@ class Api::V1::FeedbacksController < Api::V1::BaseController
   end
 
   private
-    def set_customer
-      phone_number = JWT.decode(params.delete(:token), nil, false).first
-      @customer = Customer.find_by_phone_number(phone_number)
-    end
-
     def check_params
       _params = params[:image] == 'undefined' ? { message: params[:message] } : { message: params[:message], image: params[:image] }
       _params

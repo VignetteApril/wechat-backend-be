@@ -3,6 +3,7 @@ json.data do
   json.grades @grade_data do |grade|
     json.name grade.name
     json.subjects grade.subjects do |subject|
+      json.id subject.id
       json.name subject.grade.name + subject.name
       json.img_url   static_url_for(subject.courses_page_cover)
     end

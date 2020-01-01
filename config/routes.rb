@@ -91,6 +91,10 @@ Rails.application.routes.draw do
       end
 
       resources :subjects, only: [:show] do
+        collection do
+          get :check_subject_owner
+          get :my_subjects
+        end
       end
 
       resources :wechats, only: [] do
@@ -98,6 +102,7 @@ Rails.application.routes.draw do
       end
 
       resources :feedbacks, only: [:create]
+      resources :book_codes, only: [:create]
     end
   end
 

@@ -117,23 +117,18 @@ class Api::V1::WechatsController < Api::V1::BaseController
   end
 
   private
-  def body_str productIds
-    id_count_hash = count_duplicate_elements productIds
-    products = Product.where(id: productIds.uniq)
-    body_arr = products.map { |product| "#{product.chinese_name} * #{id_count_hash[product.id]}" }
-    return body_arr.join(',')
-  end
-
-  def set_customer
-    phone_number = JWT.decode(params[:token], nil, false).first
-    @customer = Customer.find_by_phone_number(phone_number)
-  end
-
-  def count_duplicate_elements array
-    rs_hash = Hash.new(0)
-    array.each do |v|
-      rs_hash[v] += 1
+    def body_str productIds
+      id_count_hash = count_duplicate_elements productIds
+      products = Product.where(id: productIds.uniq)
+      body_arr = products.map { |product| "#{product.chinese_name} * #{id_count_hash[product.id]}" }
+      return body_arr.join(',')
     end
-    rs_hash
-  end
+
+    def count_duplicate_elements array
+      rs_hash = Hash.new(0)
+      array.each do |v|
+        rs_hash[v] += 1
+      end
+      rs_hash
+    end
 end

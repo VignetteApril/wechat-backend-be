@@ -3,6 +3,12 @@
   g.column name: '年级', attribute: 'name', ordering: false, assoc: [:subject, :grade]
   g.column name: '科目', attribute: 'name', ordering: false, assoc: :subject
   g.column name: '批次号', attribute: 'batch_code', ordering: true
+  g.column name: '是否已经被急活', attribute: 'is_actived', ordering: true do |book_code|
+    bool_badge_helper book_code.is_actived
+  end
+  g.column name: '是否已经被使用', attribute: 'is_used', ordering: true do |book_code|
+    bool_badge_helper book_code.is_used
+  end
 
   g.column in_csv: false, html: {style: "width:15px;"}  do |book_code|
     if can?("book_codes", "edit") && can_sys?(book_code)

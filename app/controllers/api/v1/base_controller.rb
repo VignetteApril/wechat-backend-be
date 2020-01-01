@@ -15,4 +15,8 @@ class Api::V1::BaseController < ApplicationController
     request.session_options[:skip] = true
   end
 
+  def set_customer
+    phone_number = JWT.decode(params.delete(:token), nil, false).first
+    @customer = Customer.find_by_phone_number(phone_number)
+  end
 end
