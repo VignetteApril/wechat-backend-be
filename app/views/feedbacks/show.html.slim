@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Message:
+  = @feedback.message
+p
+  strong Customer:
+  = @feedback.customer
+
+=> link_to 'Edit', edit_feedback_path(@feedback)
+'|
+=< link_to 'Back', feedbacks_path

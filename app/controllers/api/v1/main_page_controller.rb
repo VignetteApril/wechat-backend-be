@@ -5,6 +5,6 @@ class Api::V1::MainPageController < Api::V1::BaseController
   end
 
   def subjects
-    @subjects = Subject.all.group_by(&:name)
+    @subjects = Subject.all.group_by(&:name).each { |_, v| v.sort_by! { |subject| subject.grade.order_no } }
   end
 end

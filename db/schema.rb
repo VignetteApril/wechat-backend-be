@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_25_133616) do
+ActiveRecord::Schema.define(version: 2020_01_01_051954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,14 @@ ActiveRecord::Schema.define(version: 2019_12_25_133616) do
     t.index ["controller_name"], name: "index_features_on_controller_name"
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "message"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_feedbacks_on_customer_id"
+  end
+
   create_table "grades", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -244,5 +252,6 @@ ActiveRecord::Schema.define(version: 2019_12_25_133616) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "book_codes", "subjects"
   add_foreign_key "courses", "subjects"
+  add_foreign_key "feedbacks", "customers"
   add_foreign_key "subjects", "grades"
 end

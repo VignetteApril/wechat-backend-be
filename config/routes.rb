@@ -96,10 +96,13 @@ Rails.application.routes.draw do
       resources :wechats, only: [] do
         get :wechat_auth, on: :collection
       end
+
+      resources :feedbacks, only: [:create]
     end
   end
 
   resources :customers, only: [:index]
+  resources :feedbacks
 
   post 'areas/cities'
   post 'areas/districts'
