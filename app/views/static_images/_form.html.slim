@@ -9,6 +9,10 @@
           li
             = message
   .form-inputs
+    small#emailHelp.form-text.text-muted 学习页面banner: 分辨率(高*宽 单位px)：141 * 375
+    small#emailHelp.form-text.text-muted 用户协议:       分辨率(高*宽 单位px)：auto * 325
+    small#emailHelp.form-text.text-muted 隐私条款:       分辨率(高*宽 单位px)：auto * 325
+    hr
     = f.input :img_type, label: '文件类型', as: :select, collection: StaticImage.img_type_options
     = f.input :order_no, label: '顺序号'
     = f.input :img, label: '上传文件', as: :file

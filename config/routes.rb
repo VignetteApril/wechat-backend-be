@@ -103,6 +103,12 @@ Rails.application.routes.draw do
 
       resources :feedbacks, only: [:create]
       resources :book_codes, only: [:create]
+      resources :setting, only: [] do
+        collection do
+          get :user_agreement
+          get :privacy_policy
+        end
+      end
     end
   end
 

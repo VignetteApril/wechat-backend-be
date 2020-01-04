@@ -16,8 +16,8 @@ class Api::V1::WechatsController < Api::V1::BaseController
     @message = '登录成功！'
     @code = 0
   rescue => ex
-    @token = nil
-    @mixed_phone_number = nil
+    @token = ''
+    @mixed_phone_number = ''
     @code = 1
 
     @message = '登录失败！'

@@ -6,7 +6,7 @@ class Api::V1::SubjectsController < Api::V1::BaseController
   end
 
   def my_subjects
-    @subjects = @customer.subjects
+    @subjects = @customer.subjects.group_by(&:grade).sort_by{ |key, _| key.order_no  }
   end
 
   # 检查当前用户是否拥有当前subject
