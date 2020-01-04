@@ -207,7 +207,7 @@ zh-CN:
     enums:
       static_image:
         img_type:
-          main_page_video: 主页轮播视频
+          main_page_video: 主页视频
           courses_page_banner: 学习页面banner
           user_agreement: 用户协议
           privacy_policy: 隐私条款

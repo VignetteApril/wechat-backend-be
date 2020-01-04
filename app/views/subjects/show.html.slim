@@ -2,6 +2,17 @@
   .card-header
     h3.card-title 科目图片
   .card-body
+    h5 小程序码
+    - if @subject.qrcode.attached?
+      .row
+        = link_to '下载程序吗', rails_blob_path(@subject.qrcode, disposition: "attachment"), class: 'btn btn-primary'
+      .row
+        = image_tag static_url_for(@subject.qrcode), height: :auto, width: '430px'
+    - else
+      .row
+        = link_to '生成小程序码', generate_qr_code_image_grade_subject_path(@subject.grade, @subject), class: 'btn btn-primary'
+
+    hr
     h5 主页封面图
     .row
       - if @subject.main_page_cover.attached?
@@ -20,7 +31,7 @@
     hr
     h5 详情图
     .row
-      = link_to '删除详情图', destroy_detail_imgs_grade_subject_path, method: :delete, data: { confirm: '您确认删除吗？' }, class: 'btn btn-danger btn-sm'
+      = link_to '删除详情图', destroy_detail_imgs_grade_subject_path, method: :delete, data: { confirm: '您确认删除吗？' }, class: 'btn btn-danger'
     .row
       - @subject.detail_imgs.each do |img|
         = image_tag  static_url_for(img), height: :auto, width: '200px', class: 'mr-2 mt-2'

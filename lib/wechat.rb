@@ -1,4 +1,5 @@
 require 'net/http'
+require 'httparty'
 
 module Wechat
   APP_ID = YAML.load_file(Rails.root.join('config','wechat.yml'))['development']['appid']
@@ -53,6 +54,31 @@ module Wechat
       message = '支付接口请求失败！'
       return pay_params, code, message
     end
+  end
+
+  # 获取用于获取小程序码的ACCESS TOKEN
+  def get_access_token
+    uri = URI('https://api.weixin.qq.com/cgi-bin/token')
+    params = {grant_type: 'client_credential', appid: APP_ID, secret: SECRET}
+    uri.query = URI.encode_www_form(params)
+    res = Net::HTTP.get_response(uri)
+    access_token = JSON.parse(res.body)["access_token"]
+    access_token
+  end
+
+  # @param pages/subject/subject
+  # @param subject_id=1
+  # @return { buffer: buffer } when no error
+  # @return { errcode: '40001', errmsg: 'xxx' } when error
+  def get_qr_code_image page, scene
+    params = {access_token: get_access_token}
+    uri = URI('https://api.weixin.qq.com/wxa/getwxacodeunlimit')
+    uri.query = URI.encode_www_form(params)
+    res = HTTParty.post(uri, headers: {'Content-Type' => 'application/json'},
+                             body: { scene: 'subject_id=1',
+                             page: 'pages/subject/subject' }.to_json).body
+    res_data = JSON.parse(res)
+    res_data
   end
 
   private

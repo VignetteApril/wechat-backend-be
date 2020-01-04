@@ -6,14 +6,27 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+qiniu_development: &qiniu_development
+  service: Qiniu
+  access_key: eWlbOI45j0RhEFb2OPrukACO3mXQnDGHbUzpfyOm
+  secret_key: pOX9sx6MfESkhsSI3QIVgSzYbg2_vBti91TjvLKI
+  bucket: youleshu
+  domain: static.youleshu.vip
+  protocol: https
+  bucket_private: false
+
+qiniu_production: &qiniu_production
+  service: Qiniu
+  access_key: umI4cs0V0NRHR8hhXESE84KGP2hoL8BiAU6jQb_Y
+  secret_key: jh9-YE-3o27GGRuHeqmN_LvhZP2gXGNSsJkJGPqn
+  bucket: youleshu-production
+  domain: p-static.youleshu.vip
+  protocol: https
+  bucket_private: false
+
 qiniu:
-    service: Qiniu
-    access_key: eWlbOI45j0RhEFb2OPrukACO3mXQnDGHbUzpfyOm
-    secret_key: pOX9sx6MfESkhsSI3QIVgSzYbg2_vBti91TjvLKI
-    bucket: youleshu
-    domain: static.youleshu.vip
-    protocol: https
-    bucket_private: false
+  <<: <%= "*qiniu_#{Rails.env}" %>
+
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3

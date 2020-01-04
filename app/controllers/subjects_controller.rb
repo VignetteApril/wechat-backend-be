@@ -1,6 +1,7 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :edit, :update, :destroy, :destroy_detail_imgs]
-  before_action :set_grid, only: [:new, :edit, :create, :update, :destroy_detail_imgs]
+  include Wechat
+  before_action :set_subject, only: [:show, :edit, :update, :destroy, :destroy_detail_imgs, :generate_qr_code_image]
+  before_action :set_grade, only: [:new, :edit, :create, :update, :destroy_detail_imgs, :generate_qr_code_image]
 
   # GET /subjects
   # GET /subjects.json
@@ -74,8 +75,26 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def generate_qr_code_image
+    res = get_qr_code_image 'pages/subject/subject', "subject_id=#{@subject.id}"
+    if res["errcode"].nil?
+      @subject.qrcode.attach io: StringIO.new(res["buffer"]),
+                             content_type: "image/jpg"
+      return_message = "二维码已经生成！"
+      alert_type = 'notice'
+    else
+      return_message = "二维码生成失败：#{res["errmsg"]}"
+      alert_type = 'alert'
+    end
+
+    respond_to do |format|
+      format.html { redirect_to grade_subject_url(@grade, @subject), alert_type.to_sym => return_message }
+      format.json { head :no_content }
+    end
+  end
+
   private
-    def set_grid
+    def set_grade
       @grade = Grade.find(params[:grade_id])
     end
     # Use callbacks to share common setup or constraints between actions.

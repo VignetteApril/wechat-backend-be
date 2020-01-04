@@ -21,4 +21,31 @@ class Api::V1::SubjectsController < Api::V1::BaseController
       @message = '您还没有拥有当前课程的权限，请输入学习码获取.'
     end
   end
+
+  # 搜索分类三种类型
+  # 只搜索年级
+  # 只所搜科目
+  # 年级科目都搜索
+  def search
+    key_words = params[:key_words]
+    @message = '搜索的科目已经成功返回'
+    @code = 0
+    case key_words.size
+    when 3
+      grade = Grade.find_by_name(key_words)
+      @subjects = grade.subjects
+    when 2
+      @subjects = Subject.where(name: key_words)
+    when 5
+      grade_name = key_words[0..2]
+      subject_name = key_words[3..4]
+      grade = Grade.find_by_name(grade_name)
+      @subjects = grade.subjects.where(name: subject_name)
+    else
+      @message = '请检测您搜索的关键词'
+      @code = 1
+    end
+
+    @subjects = @subjects.nil? ? [] : @subjects.group_by(&:grade).sort_by{ |key, _| key.order_no  }
+  end
 end

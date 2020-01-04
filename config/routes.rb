@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     resources :subjects do
       resources :courses
       delete :destroy_detail_imgs, on: :member
+      get :generate_qr_code_image, on: :member
     end
   end
 
@@ -94,6 +95,7 @@ Rails.application.routes.draw do
         collection do
           get :check_subject_owner
           get :my_subjects
+          get :search
         end
       end
 

@@ -45,6 +45,7 @@ gem 'sidekiq', '5.2.7'
 gem 'mina-sidekiq'
 gem 'streamio-ffmpeg'
 gem 'jwt'
+gem 'httparty'
 
 group :development, :test do
   gem 'minitest-rails'

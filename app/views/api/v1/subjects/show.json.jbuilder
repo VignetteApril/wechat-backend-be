@@ -1,7 +1,7 @@
 json.data do
   json.id @subject.id
   json.name @subject.name
-  json.detail_images @subject.detail_imgs do |detail_image|
+  json.detail_images @subject.detail_imgs.order(created_at: :asc) do |detail_image|
     json.image_url static_url_for(detail_image)
   end
 
