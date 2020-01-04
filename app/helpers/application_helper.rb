@@ -55,8 +55,9 @@ module ApplicationHelper
   end
 
   def  static_url_for blob_object
+    static_url = Rails.env == 'development' ? 'https://static.youleshu.vip/' : 'https://p-static.youleshu.vip/'
     if !blob_object.nil?
-      'https://static.youleshu.vip/' + blob_object.key
+      static_url + blob_object.key
     else
       ''
     end
