@@ -9,11 +9,11 @@ case "$1" in
         RAILS_ENV=production bundle exec sidekiq -C /root/deploy_apps/youshule/current/config/sidekiq.yml --daemon
         ;;
     stop)
-        echo "stoping puma..."
+        echo "stoping sidekiq..."
         kill `cat "/root/deploy_apps/youshule/shared/tmp/pids/sidekiq.pid"`
         ;;
     reload)
-        echo "reloading puma..."
+        echo "reloading sidekiq..."
         kill `cat "/root/deploy_apps/youshule/shared/tmp/pids/puma.pid"`
          RAILS_ENV=production bundle exec sidekiq -C/root/deploy_apps/youshule/current/config/sidekiq.yml --daemon
         ;;
