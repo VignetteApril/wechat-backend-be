@@ -1,5 +1,3 @@
-= render 'layouts/preview_image_modal'
-
 .card
   .card-header
     h3.card-title 用户反馈
@@ -7,9 +5,3 @@
     .row
       .table-responsive
         = render partial: "feedbacks_grid"
-
-javascript:
-    $('.image-modal').click(function (e) {
-        $('#imagepreview').attr('src', e.currentTarget.currentSrc);
-        $('#imagemodal').modal('show');
-    });

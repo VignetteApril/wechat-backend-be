@@ -7,6 +7,7 @@ html
     = csrf_meta_tags
 
   body data-controller="#{controller.controller_path}" data-action="#{controller.action_name}"
+    = render 'layouts/preview_image_modal'
     .page
       .flex-fill
         = render 'layouts/top_bar'
@@ -18,3 +19,9 @@ html
                 = render 'layouts/application_sidebar'
               .col-lg-10
                 == yield
+
+javascript:
+    $('.image-modal').click(function (e) {
+        $('#imagepreview').attr('src', e.currentTarget.currentSrc);
+        $('#imagemodal').modal('show');
+    });
