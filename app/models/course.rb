@@ -9,7 +9,8 @@ class Course < ApplicationRecord
   before_save :set_video_length
 
   def set_video_length
-    uri = URI("https://static.youleshu.vip/#{self.video.key}?avinfo")
+    static_url = Rails.env == 'development' ? 'https://static.youleshu.vip/' : 'https://p-static.youleshu.vip/'
+    uri = URI("#{static_url}#{self.video.key}?avinfo")
     self.length = JSON.parse(Net::HTTP.get(uri))['streams'][0]['duration']
   end
 

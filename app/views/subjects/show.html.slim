@@ -21,7 +21,7 @@
         span 暂无
 
     hr
-    h5 主页封面图
+    h5 学习封面图
     .row
       - if @subject.courses_page_cover.attached?
         = image_tag  static_url_for(@subject.courses_page_cover), height: :auto, width: '200px'
