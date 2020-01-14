@@ -56,7 +56,7 @@ module ApplicationHelper
 
   def  static_url_for blob_object
     static_url = Rails.env == 'development' ? 'https://static.youleshu.vip/' : 'https://p-static.youleshu.vip/'
-    if !blob_object.nil? && blob_object.attached?
+    if ((blob_object.is_a? ActiveStorage::Attachment) && !blob_object.nil?) || (!blob_object.nil? && blob_object.attached?)
       static_url + blob_object.key
     else
       ''
