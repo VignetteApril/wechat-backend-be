@@ -4,7 +4,7 @@ json.data do
     json.name grade.name
     json.subjects grade.subjects do |subject|
       json.id subject.id
-      json.name grade.name + subject.name
+      json.name subject.name
       json.img_url static_url_for(subject.courses_page_cover)
     end
   end
