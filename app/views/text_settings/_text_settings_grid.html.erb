@@ -1,0 +1,14 @@
+<%= grid(@text_settings, show_filters: :always) do |g|
+  g.column name: '文字内容', attribute: 'content', ordering: false
+  g.column name: '文字位置', attribute: 'content_type', ordering: false do |text_setting|
+    text_setting.content_type_name
+  end
+
+  g.column in_csv: false, html: {style: "width:5px;"}  do |text_setting|
+    link_to '编辑', edit_text_setting_path(text_setting), class: 'btn btn-secondary btn-sm'
+  end
+
+  g.column in_csv: false, html: {style: "width:5px;"}  do |text_setting|
+    link_to '删除', text_setting_path(text_setting), method: :delete, data: { confirm: '您确认删除吗？' }, class: 'btn btn-danger btn-sm'
+  end
+end -%>

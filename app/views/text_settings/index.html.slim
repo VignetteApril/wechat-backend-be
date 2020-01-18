@@ -1,0 +1,9 @@
+.row
+  .card
+    .card-header
+      h3.card-title 文字管理
+      = link_to '新建文字', new_text_setting_path, class: 'btn btn-primary', style: 'margin-left: auto'
+    .card-body
+      .row
+        .table-responsive
+          = render partial: "text_settings_grid"

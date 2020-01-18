@@ -1,0 +1,2 @@
+module TextSettingsHelper
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_01_074725) do
+ActiveRecord::Schema.define(version: 2020_01_18_105826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,6 +228,13 @@ ActiveRecord::Schema.define(version: 2020_01_01_074725) do
     t.datetime "updated_at", null: false
     t.index ["log_date"], name: "index_sys_logs_on_log_date"
     t.index ["user_id"], name: "index_sys_logs_on_user_id"
+  end
+
+  create_table "text_settings", force: :cascade do |t|
+    t.string "content"
+    t.integer "content_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_roles", force: :cascade do |t|

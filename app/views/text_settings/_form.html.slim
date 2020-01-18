@@ -1,0 +1,15 @@
+= simple_form_for(@text_setting) do |f|
+  - if @text_setting.errors.any?
+    #error_explanation.alert.alert-warning
+      h4
+        | 该资源保存时出错：
+        = pluralize(@text_setting.errors.count, "个错误")
+      ul
+        - @grade.errors.full_messages.each do |message|
+          li
+            = message
+  .form-inputs
+    = f.input :content_type, label: '文字位置', as: :select, collection: TextSetting.content_type_options
+    = f.input :content, label: '文字内容'
+  .form-actions
+    = f.button :submit, '确认', class: 'btn btn-success'

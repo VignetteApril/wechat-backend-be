@@ -111,11 +111,18 @@ Rails.application.routes.draw do
           get :privacy_policy
         end
       end
+
+      resources :text_settings, only: [] do
+        collection do
+          get :book_code_comment
+        end
+      end
     end
   end
 
   resources :customers, only: [:index]
   resources :feedbacks
+  resources :text_settings
 
   post 'areas/cities'
   post 'areas/districts'

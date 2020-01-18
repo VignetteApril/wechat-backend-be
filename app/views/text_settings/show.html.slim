@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Content:
+  = @text_setting.content
+p
+  strong Content type:
+  = @text_setting.content_type
+
+=> link_to 'Edit', edit_text_setting_path(@text_setting)
+'|
+=< link_to 'Back', text_settings_path

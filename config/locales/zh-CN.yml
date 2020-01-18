@@ -216,6 +216,9 @@ zh-CN:
         course_type:
           sample_video: 试看视频
           formal_video: 正式视频
+      text_setting:
+        content_type:
+          input_book_code_comment: 输入学习码的注
     models:
       user: "用户"
       department: "部门"
