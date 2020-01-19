@@ -8,9 +8,7 @@ class SubjectsController < ApplicationController
   def index
     @subjects = initialize_grid( Subject, per_page: 20,
                                           order_direction: 'asc',
-                                          name: 'subjects',
-                                          enable_export_to_csv: true,
-                                          csv_file_name: 'subjects' )
+                                          name: 'subjects' )
   end
 
   # GET /subjects/1
@@ -111,6 +109,7 @@ class SubjectsController < ApplicationController
                                       :description,
                                       :courses_page_cover,
                                       :main_page_cover,
+                                      :subject_type,
                                       detail_imgs: [])
     end
 end

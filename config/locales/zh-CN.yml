@@ -219,6 +219,11 @@ zh-CN:
       text_setting:
         content_type:
           input_book_code_comment: 输入学习码的注
+      subject:
+        subject_type:
+          chinese: 语文
+          english: 英语
+          math: 数学
     models:
       user: "用户"
       department: "部门"

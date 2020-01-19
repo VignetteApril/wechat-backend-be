@@ -15,8 +15,8 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require jquery-ui
-//= require wice_grid
 //= require bootstrap-datepicker
+//= require wice_grid
 //= require select2
 //= require select2_locale_zh-CN
 //= require select2totree
@@ -34,7 +34,6 @@
 
 
 // 处理select2在turbolinks的bug
-
 $(document).ready(function () {
     $('select.select2-hidden-accessible').select2('destroy');
 

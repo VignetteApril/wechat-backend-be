@@ -2,7 +2,13 @@
   g.column name: '姓名', attribute: 'name', ordering: false
   g.column name: '手机号', attribute: 'phone_number', ordering: false
   g.column name: '微信open_id', attribute: 'wx_open_id', ordering: false
-  g.column name: '注册时间', attribute: 'created_at', ordering: false, filter: false do |customer|
+  g.column name: '注册时间', attribute: 'created_at', ordering: false do |customer|
     customer.created_at.strftime("%Y年 %m月 %d日")
   end
 end -%>
+
+
+<script>
+    $('#customers_f_created_at_fr').css({"width": "130px"});
+    $('#customers_f_created_at_to').css({"width": "130px"});
+</script>
