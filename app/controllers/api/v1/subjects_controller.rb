@@ -35,12 +35,12 @@ class Api::V1::SubjectsController < Api::V1::BaseController
       grade = Grade.find_by_name(key_words)
       @subjects = grade.subjects
     when 2
-      @subjects = Subject.where(name: key_words)
+      @subjects = Subject.where('name LIKE ?', "%#{key_words}%")
     when 5
       grade_name = key_words[0..2]
       subject_name = key_words[3..4]
       grade = Grade.find_by_name(grade_name)
-      @subjects = grade.subjects.where(name: subject_name)
+      @subjects = grade.subjects.where('name LIKE ?', "%#{key_words}%")
     else
       @message = '请检测您搜索的关键词'
       @code = 1
