@@ -12,7 +12,7 @@
     = f.input :name, label: '科目名称'
     = f.input :order_no, label: '顺序号'
     = f.input :code_prefix, label: '学习码前缀', placeholder: '大写字母，两位'
-    = f.input :description, label: '课程简介', as: :text, number: 3
+    / = f.input :description, label: '课程简介', as: :text, number: 3
     = f.input :subject_type, label: '课程类型', as: :select, collection: Subject.subject_type_options, include_blank: false
     small#emailHelp.form-text.text-muted 分辨率(高*宽 单位px)：235 * 330
     = f.input :main_page_cover, label: '主页课程封面', as: :file
