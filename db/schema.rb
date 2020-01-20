@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_19_144253) do
+ActiveRecord::Schema.define(version: 2020_01_20_131754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -209,6 +209,7 @@ ActiveRecord::Schema.define(version: 2020_01_19_144253) do
     t.string "code_prefix"
     t.text "description"
     t.integer "subject_type"
+    t.string "main_desc"
     t.index ["grade_id"], name: "index_subjects_on_grade_id"
   end
 

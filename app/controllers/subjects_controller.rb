@@ -110,6 +110,7 @@ class SubjectsController < ApplicationController
                                       :courses_page_cover,
                                       :main_page_cover,
                                       :subject_type,
+                                      :main_desc,
                                       detail_imgs: [])
     end
 end
