@@ -6,10 +6,10 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = initialize_grid( Course, per_page: 20,
-                                        name: 'courses',
-                                        enable_export_to_csv: false,
-                                        csv_file_name: 'courses')
+    @courses = initialize_grid( @subject.courses, per_page: 20,
+                                                  name: 'courses',
+                                                  enable_export_to_csv: false,
+                                                  csv_file_name: 'courses')
   end
 
   # GET /courses/1
