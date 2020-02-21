@@ -1,6 +1,6 @@
 json.data do
-  json.video_url   static_url_for(@top_video.first.img)
-  json.banner static_url_for(@banner_data.img)
+  json.video_url   static_url_for(@top_video.first.try(:img))
+  json.banner static_url_for(@banner_data.try(:img))
 end
 
 json.code 0
