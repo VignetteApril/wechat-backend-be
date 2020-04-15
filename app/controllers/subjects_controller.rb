@@ -76,7 +76,7 @@ class SubjectsController < ApplicationController
   def generate_qr_code_image
     res = get_qr_code_image 'pages/subject/subject', "subject_id=#{@subject.id}"
     if res["errcode"].nil?
-      @subject.qrcode.attach io: StringIO.new(res["buffer"]),
+      @subject.qrcode.attach io: StringIO.new(res),
                              content_type: "image/jpg"
       return_message = "二维码已经生成！"
       alert_type = 'notice'
