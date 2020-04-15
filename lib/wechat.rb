@@ -78,7 +78,7 @@ module Wechat
                              body: { scene: scene,
                              page: 'pages/subject/subject' }.to_json).body
     # res_data = JSON.parse(res)
-    res_data
+    res
   end
 
   private
