@@ -75,8 +75,7 @@ module Wechat
     uri = URI('https://api.weixin.qq.com/wxa/getwxacodeunlimit')
     uri.query = URI.encode_www_form(params)
     res = HTTParty.post(uri, headers: {'Content-Type' => 'application/json'},
-                             body: { scene: scene,
-                             page: 'pages/subject/subject' }.to_json).body
+                             body: { scene: scene, page: page }.to_json).body
     # res_data = JSON.parse(res)
     Rails.logger.info res
     res

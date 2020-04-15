@@ -3,14 +3,13 @@
     h3.card-title 科目图片
   .card-body
     h5 小程序码
-    - if @subject.qrcode.attached?
-      .row
-        = link_to '下载程序吗', rails_blob_path(@subject.qrcode, disposition: "attachment"), class: 'btn btn-primary'
-      .row
-        = image_tag static_url_for(@subject.qrcode), height: :auto, width: '430px'
-    - else
-      .row
-        = link_to '生成小程序码', generate_qr_code_image_grade_subject_path(@subject.grade, @subject), class: 'btn btn-primary'
+    .row
+      = link_to '生成小程序码', generate_qr_code_image_grade_subject_path(@subject.grade, @subject), class: 'btn btn-primary'
+    .row
+      = link_to '下载程序码', rails_blob_path(@subject.qrcode, disposition: "attachment"), class: 'btn btn-primary mt-2'
+    .row
+      = image_tag static_url_for(@subject.qrcode), height: :auto, width: '430px'
+      
 
     hr
     h5 主页封面图
