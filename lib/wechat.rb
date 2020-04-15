@@ -75,7 +75,7 @@ module Wechat
     uri = URI('https://api.weixin.qq.com/wxa/getwxacodeunlimit')
     uri.query = URI.encode_www_form(params)
     res = HTTParty.post(uri, headers: {'Content-Type' => 'application/json'},
-                             body: { scene: 'subject_id=1',
+                             body: { scene: scene,
                              page: 'pages/subject/subject' }.to_json).body
     res_data = JSON.parse(res)
     res_data
