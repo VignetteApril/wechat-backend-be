@@ -78,6 +78,7 @@ module Wechat
                              body: { scene: scene,
                              page: 'pages/subject/subject' }.to_json).body
     # res_data = JSON.parse(res)
+    Rails.logger.info res
     res
   end
 
