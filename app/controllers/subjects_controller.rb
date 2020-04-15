@@ -77,7 +77,8 @@ class SubjectsController < ApplicationController
     res = get_qr_code_image 'pages/subject/subject', "subject_id=#{@subject.id}"
     if res["errcode"].nil?
       @subject.qrcode.attach io: StringIO.new(res),
-                             content_type: "image/jpg"
+                             content_type: "image/jpg",
+                             filename: "subject_file_#{@subject.id}"
       return_message = "二维码已经生成！"
       alert_type = 'notice'
     else
